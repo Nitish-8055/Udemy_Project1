@@ -54,14 +54,10 @@ class SecureCreditCard(CreditCard):
             return True
 
 
-class Spa:
+class Spa():
     def __init__(self, name, id):
         self.name = name
         self.hotel_name = df.loc[df['id'] == id, 'name'].squeeze()
-
-    def reservation(self, choice):
-        if choice == 'yes':
-            return True
 
     def generate(self):
         return f"""
@@ -87,7 +83,7 @@ if hotel.available():
 
             choice = input("Do you want to book a spa package? ")
             spa = Spa(name, id)
-            if spa.reservation(choice):
+            if choice == 'yes':
                 print(spa.generate())
         else:
             print("Credit card authentication failed")
